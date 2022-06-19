@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>QR code Generator</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+<form class="qrcode" action="/generate" method="post">
+	<span class="form-title" >
+		QR Code Generator
+	</span>
+	<div>
+		<input class="input100" type="text" name="qrtext" placeholder="Enter Text here">
+	</div>
+	<br>
+	<div class="container-contact100-form-btn">
+		<input type="submit" class="contact100-form-btn" name="submit" placeholder="Submit">
+	</div>
+</form>
+<br><br>
+<h3>QR Image: </h3>
+<div id="image">
+	<img th:src = "${url}" />
+</div>
+<script th:inline="javascript">
+	/*<![CDATA[*/
+	$('.contact100-form-btn').click(function(){
+	  $.ajax({
+		    type: "GET",
+		    url:/*[[${url}]]*/,
+		    async : 1,
+		    success: function() {  
+		    }
+		}); 
+	  /*]]>*/
+});
+</script>
+</body>
+</html>
